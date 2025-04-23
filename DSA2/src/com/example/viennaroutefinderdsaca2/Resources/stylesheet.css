@@ -1,0 +1,27 @@
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+    -fx-base: #f4f4f4;
+}
+
+.label {
+    -fx-text-fill: #333;
+}
+
+.combo-box {
+    -fx-pref-width: 300;
+}
+
+.button {
+    -fx-background-color: #007ACC;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.button:hover {
+    -fx-background-color: #005f9e;
+}
+
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ccc;
+}

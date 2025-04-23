@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.viennauroutefinderdsaca2.RouteFinder"
+            prefHeight="950.0" prefWidth="1550.0">
+    
+    <ImageView fx:id="mapView" fitWidth="1000.0" fitHeight="950.0" preserveRatio="false"/>
+    
+    <AnchorPane fx:id="mapPane" prefWidth="1000.0" prefHeight="950.0" style="-fx-border-color: #ccc;" />
+    
+    <!-- Controls Panel -->
+    <VBox layoutX="1010.0" layoutY="20.0" spacing="10" prefWidth="520.0">
+        <Label text="Vienna U-Bahn Route Finder" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+        <ComboBox fx:id="startPointBox" promptText="Select Starting Station"/>
+        <ComboBox fx:id="endPointBox" promptText="Select Destination Station"/>
+        
+        <Label text="Algorithm:" />
+        <HBox spacing="10">
+            <RadioButton fx:id="dfsButton" text="DFS" toggleGroup="$algoSelection"/>
+            <RadioButton fx:id="bfsButton" text="BFS" toggleGroup="$algoSelection"/>
+            <RadioButton fx:id="dijkstraButton" text="Dijkstra" toggleGroup="$algoSelection"/>
+        </HBox>
+        
+        <Button text="Find Route" onAction="#findRoute"/>
+        
+        <Label text="Station to Avoid:" />
+        <ComboBox fx:id="avoidBox" promptText="Select station to avoid"/>
+        <Button text="Add to Avoid" onAction="#addToAvoid"/>
+        <Label fx:id="avoidingLabel" text="Avoiding:" wrapText="true"/>
+        
+        <Label text="Station to Visit:" />
+        <ComboBox fx:id="waypointsBox" promptText="Select waypoint"/>
+        <Button text="Add Waypoint" onAction="#addToWaypoint"/>
+        <Label fx:id="visitLabel" text="Visiting:" wrapText="true"/>
+        
+        <Button text="Penalty Path (Dijkstra+Penalty)" onAction="#findPathWithLinePenalty"/>
+        <Slider fx:id="historicalVal" min="0" max="50" value="10" />
+        <Label text="Line Change Penalty Slider"/>
+        
+        <ListView fx:id="dfsListView" prefHeight="300.0" />
+        
+        <HBox spacing="10">
+            <Button text="Minimise" onAction="#minimiseApp"/>
+            <Button text="Close" onAction="#closeApp"/>
+        </HBox>
+        
+        <Label fx:id="systemMessage" textFill="red"/>
+    </VBox>
+</AnchorPane>
